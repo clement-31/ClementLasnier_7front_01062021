@@ -3,7 +3,7 @@
     <nav>
       <ul class="nav justify-content-start nav-fill">
         <li class="nav-item">
-          <router-link class="nav-link m-1 p-0 text-center text-white" to="/signup">S'incrire</router-link>
+          <router-link class="nav-link m-1 p-0 text-center text-white" to="/signup">S'inscrire</router-link>
         </li>
         <li class="nav-item">
           <router-link class="nav-link m-1 p-0 text-white" to="/login">Se connecter</router-link>
