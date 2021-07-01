@@ -1,11 +1,25 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import VueRouter from 'vue-router'
-import router from './router'
-import store from './store'
+import Vue from 'vue';
+import App from './App.vue';
+import router from './router';
 
 
-const app = createApp(App).use(store);
-app.use(router, VueRouter);
-app.mount('#app');
+
+Vue.config.productionTip = false
+
+Vue.prototype.$apiUrl = process.env.API;
+
+if(localStorage.user != undefined) {
+    Vue.prototype.$token = JSON.parse(localStorage.user).token;
+
+    Vue.prototype.$user = JSON.parse(localStorage.user);
+
+    Vue.prototype.$user = JSON.parse(localStorage.user)
+
+
+}
+
+new Vue({
+    router,
+    render: h => h(App)
+}).$mount('#app');
 
