@@ -1,68 +1,44 @@
-import { createRouter, createWebHistory,  } from "vue-router";
-import Accueil from '@/views/Accueil.vue';
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Post from '../views/Post.vue';
+import Home from '../views/Home.vue';
 
+
+
+Vue.use(VueRouter)
 
 const routes = [
   {
-    path: "/",
-    name: "Accueil",
-    component: Accueil
+    path: '/',
+    name: 'Home',
+    component: Home
   },
   {
-    path: "/signup",
-    name: "Signup",
-    component: () => import(/*webpackChunkName: "signup"*/ '@/views/Signup.vue')
+    path: '/post/:userId',
+    name: 'Post',
+    component: Post
   },
   {
-    path: "/login",
-    name: "Login",
-    component: () => import(/*webpackChunkName: "login"*/ '@/views/Login.vue')
+    path :'/signup',
+    name : 'Signup',
+    component: () => import(`../views/Signup.vue`)
   },
   {
-    path: "/deconnect",
-    name: "Deconnect",
-    component: () => import(/*webpackChunkName: "deconnect"*/ '@/views/Deconnect.vue')
+    path :'/login',
+    name : 'Login',
+    component : () => import(`../views/Login.vue`)
   },
   {
-    path: "/confidential",
-    name: "Confidential",
-    component: () => import(/*webpackChunkName: "confidential"*/ '@/views/Confidential.vue')
-  },
-  {
-    path: "/reglement",
-    name: "Reglement",
-    component: () => import(/*webpackChunkName: "reglement"*/ '@/views/Reglement.vue')
-  },
-  {
-    path: "/unsubscribe",
-    name: "Unsubscribe",
-    component: () => import(/*webpackChunkName: "unsubscribe"*/ '@/views/Unsubscribe.vue')
-  },
-  {
-    path: "/forum",
-    name: "Forum",
-    component: () => import(/*webpackChunkName: "forum"*/ '@/views/Forum.vue')
-  },
-  {
-    path: "/forum-texte",
-    name: "ForumTexte",
-    component: () => import(/*webpackChunkName: "forumTexte"*/ '@/views/ForumTexte.vue')
-  },
-  {
-    path: "/forum-multimedia",
-    name: "ForumMultimedia",
-    component: () => import(/*webpackChunkName: "forumMultimedia"*/ '@/views/ForumMultimedia.vue')
-  },
-  {
-    path: "/commentaire",
-    name: "Commentaire",
-    component: () => import(/*webpackChunkName: "commentaire"*/ '@/views/Commentaire.vue')
-  },
+    path : '/profil',
+    name : 'Profil',
+    component: () => import(`../views/Profil.vue`)
+  }
+]
 
-];
 
-const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+const router = new VueRouter({
+  mode: 'history',
+  base: process.env.BASE_URL,
   routes
 })
 
