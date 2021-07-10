@@ -1,0 +1,101 @@
+<template>
+  <div class="form-group">
+
+    <img class="logo" src="/images/icon-above-font.png" alt="Logo Groupomania"/>
+
+    <nav><router-link to="/">Se connecter</router-link> | <router-link to="/signup" class="active">S'inscrire</router-link></nav>
+
+    <form class="form" @submit.prevent = login()>
+
+      <label for="login-email">Votre email :</label>
+      <input type="email" id="login-email" placeholder="email" required>
+
+      <label for="login-password">Votre mot de passe :</label>
+      <input type="password" id="login-password"  placeholder="mot de passe" required>
+
+      <div class="error-message">{{message}}</div>
+
+      <button id="login-btn" v-on:@click="login()">Se connecter</button>
+
+    </form>
+  </div>
+</template>
+
+<script>
+import axios from 'axios'
+export default {
+  name : 'LoginForm',
+  data(){
+    return {
+      message : "",
+    }
+
+  },
+  methods : {
+    login() {
+
+      const email = document.getElementById("login-email").value;
+      const password = document.getElementById("login-password").value;
+
+      axios.post(`${this.$apiUrl}/auth/login`,
+          {
+            email,
+            password
+          },
+          {
+            headers : {
+              'Content-Type' : 'application/json'
+            }
+          }
+      )
+          .then(res => {
+            localStorage.setItem('user', JSON.stringify(res.data));
+            location.reload();
+          })
+          .catch((error) => {
+            if (error.res.status === 404) {
+              this.message = "Utilisateur non reconnu"
+            }
+
+            if(error.res.status === 401) {
+              this.message = " Vérifier votre email et/ou votre mot de passe"
+            }
+            if(error.res.status === 500) {
+              this.message = "Erreur serveur"
+            }
+          })
+    }
+  }
+}
+</script>
+
+<style lang="css" >
+.form{
+  width: 700px;
+  margin:  10rem auto;
+  border : solid 1px;
+  border-radius: 20px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  padding-top: .8rem;
+}
+.logo{
+  margin: 3rem auto;
+}
+input{
+  height: 30px;
+  width: 60%;
+  border-radius: 10px;
+  text-align: center;
+  border: solid 2px red;
+  margin:.5rem auto .8rem auto;
+
+}
+#login-btn{
+  height:30px;
+  border-radius: 10px;
+  width:20%;
+  margin: 1rem auto;
+}
+</style>
