@@ -9,14 +9,15 @@
 </template>
 
 <script>
-// @ is an alias to /src
+
+import LoginForm from '@/components/LoginForm.vue';
+import  Nav from '@/components/Nav.vue';
+
 export default {
   name: 'Home',
   components: {
     LoginForm,
-    Post,
-    Nav,
-    NewPost
+    Nav
   },
   data(){
     return{
