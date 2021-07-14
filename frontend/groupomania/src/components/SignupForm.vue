@@ -1,49 +1,75 @@
 <template>
-  <div class="signup-group">
+  <div class="row">
+    <h1 class=" logo" >
+      <img src="../assets/images/icon-above-font.png" alt="Logo Groupomania">
+    </h1>
+    <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 mt-5 pt-3 pb-3 bg-white from-wrapper">
 
-    <img  src="/images/icon-above-font.png" class="logo" alt="Logo Groupomania"/>
-    <nav><router-link to="/">Se connecter</router-link> | <router-link to="/signup" class="active">S'inscrire</router-link></nav>
+      <div class="container">
 
-    <form class="form" @submit.prevent = signup()>
-
-      <label for="signup-pseudo">Votre pseudo :</label>
-      <input type="text" id="signup-pseudo" placeholder="name" required autofocus >
-
-      <label for="signup-email">Votre email :</label>
-      <input type="email" id="signup-email" placeHolder="email" required>
-
-      <label for="signup-password">Votre mot de passe :</label>
-      <input type="password" id="signup-password"  placeholder="Mot de passe" required>
-
-      <label for="signup-password-confirm">Confirmer votre mot de passe</label>
-      <input type="password" id="signup-password-confirm" placeholder="Confirmer le mot de passe" required>
+        <h3>S'inscrire</h3>
+        <hr>
+        <form  @submit.prevent="signup" >
+          <div class="row">
+            <div class="col-12 col-sm-6">
+              <div class="form-group">
+                <label for="signup-pseudo">Pseudo</label>
+                <input type="text" class="form-control" name="pseudo" id="signup-pseudo" v-model="pseudo" />
+              </div>
+            </div>
 
 
-
-      <button id="signup-btn"  @click="signup()">S'inscrire</button>
-      <div class="error-message">{{message}}</div>
-
-      <button id="signup-btn" type="submit">S'inscrire</button>
-
-    </form>
+            <div class="col-12">
+              <div class="form-group">
+                <label for="signup-email">Email </label>
+                <input type="text" class="form-control" name="email" id="signup-email" v-model="email"/>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 ">
+              <div class="form-group">
+                <label for="signup-password">Mot de passe</label>
+                <input type="password" class="form-control" name="password" id="signup-password" v-model="password"/>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6">
+              <div class="form-group">
+                <label for="signup-passwordConfirm">Confirmez le mot de passe</label>
+                <input type="password" class="form-control" name="passwordConfirm" id="signup-passwordConfirm"
+                       v-model="passwordConfirm"/>
+              </div>
+            </div>
+            <div class="error-message">{{message}}</div>
+            <div class="row">
+              <div class="col-12 col-sm-4">
+                <button type="submit" class="btn btn-primary">S'incrire</button>
+              </div>
+              <div class="col-12 col-sm-8 text-right">
+                <a href="/login">Vous avez déjà un compte</a>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </template>
+
 <script>
 import axios from 'axios'
 export default {
-  name : 'SignupForm',
-  data(){
+  name: 'SignupForm',
+  data() {
     return {
       message : "",
-    }
+    };
   },
-  methods : {
+  methods: {
     signup() {
 
       const pseudo = document.getElementById("signup-pseudo").value;
       const email = document.getElementById("signup-email").value;
       const password = document.getElementById("signup-password").value;
-      const passwordConfirm = document.getElementById("signup-password-confirm").value;
+      const passwordConfirm = document.getElementById("signup-passwordConfirm").value;
       if(password === passwordConfirm) {
         axios.post(`${this.$apiUrl}/auth/signup`,
             {
@@ -61,17 +87,18 @@ export default {
         )
             .then(res => {
               if(res.status === 201){
-                location.href = '/'
+                location.href = '/login'
+                this.message = "Bienvenue sur votre réseau."
               }
             })
             .catch((error) => {
-              if (error.res.status === 401) {
-                this.message = "Email non disponible"
+              if (error.status === 401) {
+                this.message= "Email non disponible"
               }
             });
       }
       else if(password != passwordConfirm) {
-        this.message = " Vérifier votre émail ou/et votre mot de passe"
+        this.message = " Vérifier votre email et/ou votre mot de passe"
       }
     }
   }
@@ -79,29 +106,12 @@ export default {
 </script>
 
 <style scoped>
-.form{
-  width: 700px;
-  margin:  2rem auto;
-  border : solid 1px;
-  border-radius: 20px;
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  padding-top:.8rem;
-}
-input{
-  height: 30px;
-  width: 60%;
-  border-radius: 10px;
-  text-align: center;
-  border: solid 2px red;
-  margin:.5rem auto .8rem auto;
+.error-message{
+  background-color: rgba(233, 77, 103, 0.301);
 
-}
-#signup-btn{
-  height:30px;
-  border-radius: 10px;
-  width:20%;
-  margin: 1rem auto;
+  height:40px;
+  width:90%;
+  margin: auto auto 1rem auto;
+  color: black;
 }
 </style>

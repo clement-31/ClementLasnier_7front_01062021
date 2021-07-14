@@ -3,7 +3,7 @@
     <article class="post" v-for = "post in posts" :key="post.postId">
       <router-link :to="{ name: 'Post', params: {postId: post.postId}}">
         <div class="post-header">
-          <span class="info-P">Posté le {{dataFormat(post.createdAt)}} par {{post.firstname}} par {{post.surname}}</span>
+          <span class="info-P">Posté le {{dataFormat(post.createdAt)}} par {{post.pseudo}}</span>
           <span class="modify-P" v-if="post.userId == $user.userId || $user.isAdmin == 1">Modifier</span>
         </div>
         <h2 class="post-title">{{post.title}}</h2>
