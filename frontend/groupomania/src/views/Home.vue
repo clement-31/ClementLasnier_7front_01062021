@@ -12,6 +12,7 @@
     <NewPost v-if="loggedIn"/>
     <Posts v-if="loggedIn"/>
   </div>
+
 </template>
 
 <script>
@@ -23,7 +24,7 @@ import NewPost from '@/components/NewPost.vue';
 
 export default {
   name: 'Home',
-  component: {
+  components: {
     LoginForm,
     Nav,
     Posts,

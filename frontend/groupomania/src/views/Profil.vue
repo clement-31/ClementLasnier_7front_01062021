@@ -2,7 +2,6 @@
   <div class="profil">
     <LoginForm v-if="!loggedIn"/>
 
-    <Nav v-if="loggedIn"/>
     <UserProfil v-if="loggedIn"/>
 
   </div>
@@ -10,14 +9,12 @@
 
 <script>
 import LoginForm from'@/components/LoginForm.vue';
-import Nav from '@/components/Nav.vue';
 import UserProfil from '@/components/UserProfil.vue';
 
 export default {
   name : 'Profil',
   components : {
     LoginForm,
-    Nav,
     UserProfil
 
   },
