@@ -71,4 +71,9 @@ export default {
   width:100px;
   border: solid 1px;
 }
+.post-title{
+  border :solid 1px;
+  width: 20px;
+  height:20px;
+}
 </style>

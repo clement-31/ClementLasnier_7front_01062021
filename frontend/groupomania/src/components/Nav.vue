@@ -62,7 +62,11 @@ export default {
   padding: .5rem;
   color: black;
 }
-#logout-btn {
-  color:red;
+
+.nav-link{
+  cursor: pointer;
+}
+a .nav-item a:hover {
+  color: red;
 }
 </style>
