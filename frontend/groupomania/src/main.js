@@ -1,24 +1,14 @@
-import Vue from 'vue';
+import {createApp} from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from  './store';
+import Vuex from "vuex";
 
 
-Vue.config.productionTip = false
+createApp(App)
+    .use(router)
+    .use(store)
+    .use(Vuex)
+    .mount("#app")
 
-Vue.prototype.$apiUrl = "http://localhost:3000/api";
-
-if(localStorage.user != undefined) {
-    Vue.prototype.$token = JSON.parse(localStorage.user).token;
-
-    Vue.prototype.$user = JSON.parse(localStorage.user);
-
-
-}
-
-new Vue({
-    router,
-    store,
-    render: h => h(App)
-}).$mount('#app');
 
