@@ -1,9 +1,9 @@
 import axios from 'axios';
 import store from '../store/index';
 
-const httpClient = axios.create({
+export default axios.create({
     baseURL: process.env.VUE_APP_BASE_URL,
-    timeout: 1000,
+    timeout: 10000,
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
@@ -12,4 +12,3 @@ const httpClient = axios.create({
     }
 })
 
-export default httpClient;

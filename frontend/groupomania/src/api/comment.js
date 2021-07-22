@@ -1,15 +1,15 @@
-import httpClient from '../httpClient';
+import {default as httpClient} from './httpClient';
 
 export default {
     getComment() {
-        return httpClient().get("/comment");
+        return httpClient.get("/comment");
     },
 
     newComment(commentId, data) {
-        return httpClient().post("/comment", + commentId, data);
+        return httpClient.post("/comment", + commentId, data);
     },
 
     deleteComment(commentId) {
-        return httpClient().delete("/comment", + commentId);
+        return httpClient.delete("/comment", + commentId);
     }
 }
