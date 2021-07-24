@@ -27,7 +27,6 @@ export default {
           .then(location.href = "/");
     }
   }
-
 }
 </script>
 

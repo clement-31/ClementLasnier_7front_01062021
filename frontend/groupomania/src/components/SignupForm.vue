@@ -65,12 +65,10 @@ export default {
   },
   methods: {
     signup() {
-
       const pseudo = document.getElementById("signup-pseudo").value;
       const email = document.getElementById("signup-email").value;
       const password = document.getElementById("signup-password").value;
       const passwordConfirm = document.getElementById("signup-passwordConfirm").value;
-
       if(password === passwordConfirm) {
         axios.post(`${this.$apiUrl}/auth/signup`,
             {
@@ -108,7 +106,6 @@ export default {
 <style scoped>
 .error-message{
   background-color: rgba(233, 77, 103, 0.301);
-
   height:40px;
   width:90%;
   margin: auto auto 1rem auto;

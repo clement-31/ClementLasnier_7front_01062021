@@ -10,13 +10,11 @@
 <script>
 import LoginForm from'@/components/LoginForm.vue';
 import UserProfil from '@/components/UserProfil.vue';
-
 export default {
   name : 'Profil',
   components : {
     LoginForm,
     UserProfil
-
   },
   data() {
     return {

@@ -24,7 +24,6 @@ export default {
     }
   },
   mounted() {
-
     this.getAllPost();
   },
   methods : {

@@ -14,5 +14,3 @@ export default createStore({
         isLogged:state => state.userId !== null && state.token !== null
     }
 })
-
-

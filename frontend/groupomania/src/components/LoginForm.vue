@@ -41,12 +41,10 @@ export default {
       password : ""
     }
   },
-
   methods : {
     login() {
       const email = document.getElementById("login-email").value;
       const password = document.getElementById("login-password").value;
-
       axios.post(`${this.$apiUrl}/auth/login`,
           {
             email,
@@ -63,13 +61,11 @@ export default {
             location.href ="/Posts";
             this.message = "Vous êtes connecté !";
             console.log(localStorage.setItem())
-
           })
           .catch((error) => {
             if (error.res.status === 404) {
               this.message = "Utilisateur non reconnu";
             }
-
             if(error.res.status=== 401) {
               this.message = " Vérifier votre email et/ou votre mot de passe";
             }

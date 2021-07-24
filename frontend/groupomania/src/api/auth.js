@@ -1,4 +1,4 @@
-import {default as httpClient} from './httpClient';
+import {default as httpClient} from '/httpClient';
 
 export default {
 
@@ -9,6 +9,6 @@ export default {
         return httpClient.post("/auth/login", data);
     },
     deleteAccount(userId) {
-        return httpClient.delete("/", + userId);
+        return httpClient.delete("/", userId);
     }
 }
