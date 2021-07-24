@@ -1,8 +1,6 @@
 <template>
   <div class="row">
-    <h1 class=" logo" >
-      <img src="../assets/images/icon-above-font.png" alt="Logo Groupomania">
-    </h1>
+
     <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 mt-5 pt-3 pb-3 bg-white from-wrapper">
       <div class="container">
         <h3>Se connecter</h3>
@@ -17,7 +15,7 @@
             <label for="login-password">Mot de passe</label>
             <input type="password" class="form-control" name="password" id="login-password" v-model="password" >
           </div>
-          <div class="error-message">{{message}}</div>
+
           <div class="row">
             <div class="col-12 col-sm-4">
               <button type="submit" class="btn btn-primary">Se connecter</button>
